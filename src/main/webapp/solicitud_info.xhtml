@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+     <h:head>
+        <title>Alta Interesado</title>
+    </h:head>
+    <h:body>
+        
+         <ui:define name="content">
+            <h:form id="formBuscar">
+                <h:outputText value="Buscar Interesado por Criterio" styleClass="titulo"/>
+                <br/>
+                <h:panelGrid title="Interesado" columns="3">
+                    Nombre: <h:inputText id="campoNombre" value="#{gestion.interesado.nombre}" required="true"
+                                         disabled="#{gestion.editable}"/>
+                    <h:message for="campoNombre" />
+                    Apellido: <h:inputText id="campoApellido" value="#{gestion.interesado.apellidos}" 
+                                         disabled="#{gestion.editable}"/>
+                    <h:message for="campoApellido" />
+                    Empresa: <h:inputText id="campoEmpresa" value="#{gestion.interesado.empresa}" 
+                                         disabled="#{gestion.editable}"/>
+                    <h:message for="campoEmpresa" />
+                    
+                    <h:commandButton value="BUSCAR" action="#{gestion.buscar()}" rendered="#{gestion.visible}"/>
+                    <h:commandButton value="Nuevo" action="#{gestion.modoNuevo}" immediate="true" rendered="#{!gestion.visible}"/>
+                </h:panelGrid>
+               </h:form>
+             <br ></br>
+             
+             </ui:define>
+        <h:form id="formAlta" rendered="#{gestion.visible}">
+            <h:outputText value="Datos Interesado" styleClass="titulo" />
+            <br/>
+            <h:panelGrid columns="6" >
+                Nombre: <h:inputText id="campoNombre" value="#{gestion.interesado.nombre}"  disabled="#{!gestion.editable}">
+                                </h:inputText>
+                <h:message for="campoNombre" />
+                
+                Apellido: <h:inputText id="campoApellido" value="#{gestion.interesado.apellidos}"  disabled="#{!gestion.editable}">
+                                </h:inputText>
+                <h:message for="campoApellido" />
+                
+                Empresa: <h:inputText id="campoEmpresa" value="#{gestion.interesado.empresa}"  disabled="#{!gestion.editable}">
+                                </h:inputText>
+                <h:message for="campoEmpresa" />
+                
+                Email: <h:inputText id="campoEmail" value="#{gestion.interesado.EMail}"  disabled="#{!gestion.editable}">
+                                </h:inputText>
+                <h:message for="campoEmail" />
+                
+                Teléfono: <h:inputText id="campoTel" value="#{gestion.interesado.telefono}" disabled="#{!gestion.editable}">
+                <!--<f:convertNumber pattern="#########"/>-->
+                 </h:inputText>
+                 <h:message for="campoTel" />
+                
+                 Móvil: <h:inputText id="campoMovil" value="#{gestion.interesado.movil}" disabled="#{!gestion.editable}">
+                 <!--<f:convertNumber pattern="#########"/>-->
+                 </h:inputText>
+                 <h:message for="campoMovil" />
+                
+                 Provincia: <h:inputText id="campoProvincia" value="#{gestion.interesado.provincia}"  disabled="#{!gestion.editable}">
+                                </h:inputText>
+                <h:message for="campoProvincia" />
+                
+               </h:panelGrid>
+            <ui:remove>
+            <h:commandButton value="Grabar Grabar" action="#{gestion.grabar}" rendered="#{gestion.accionNuevo}"/>
+            <h:commandButton value="Grabar Modificacion" action="#{gestion.modificar}" rendered="#{gestion.accionModificar}"/>
+            <h:commandButton value="Grabar Editar" action="#{gestion.editar}" rendered="#{gestion.accionNuevo}"/>
+            </ui:remove>
+        </h:form>
+        <ui:remove>
+         <ui:define name="content">
+            <h:form id="formBuscar">
+                <h:outputText value="Buscar Interesado por Criterio" styleClass="titulo"/>
+                <br/>
+                <h:panelGrid title="Interesado" columns="3">
+                    Nombre: <h:inputText id="campoNombre" value="#{gestionInfoMB.buscarInteresadoPorCriterio(nombre)}" required="true"
+                                         disabled="#{gestionInfoMB.editable}"/>
+                    <h:message for="campoNombre" />
+                    Apellido: <h:inputText id="campoApellido" value="#{gestionInfoMB.buscarInteresadoPorCriterio(apellido)}" required="true"
+                                         disabled="#{gestionInfoMB.editable}"/>
+                    <h:message for="campoApellido" />
+                     Empresa: <h:inputText id="campoEmpresa" value="#{gestionInfoMB.buscarInteresadoPorCriterio(empresa)}" required="true"
+                                         disabled="#{gestionInfoMB.editable}"/>
+                    <h:message for="campoEmpresa" />
+                    
+                    <h:commandButton value="Nuevo" action="#{gestionInfoMB.coleccionInteresados}" immediate="true" rendered="#{gestionInfoMB.visible}"/>
+                </h:panelGrid>
+               </h:form>
+             </ui:define>
+            
+            </ui:remove>
+        
+    </h:body>    
+</html>
+
