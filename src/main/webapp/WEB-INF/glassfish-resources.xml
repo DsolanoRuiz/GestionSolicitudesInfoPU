@@ -12,4 +12,5 @@
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/JDBC/GestionSolicitudesInfo" object-type="user" pool-name="connectionPool"/>
     <jdbc-resource enabled="true" jndi-name="java:app/JDBC_GestionSolicitudes" object-type="user" pool-name="connectionPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/jdbc/GestionSolicitudesInfoPU" object-type="user" pool-name="connectionPool"/>
 </resources>

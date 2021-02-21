@@ -6,7 +6,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h.form>
+        <h:form>
             <h:outputText value="Menu" styleClass="titulo"/> <br/>
             <h:panelGroup style="margin-top: 10px">
                 <h:commandLink value="Inglés"
@@ -14,27 +14,8 @@
                 <h:commandLink value="Español"
                                action="#{idioma.cambiarEs}"/>
             </h:panelGroup>
-        </h.form>
-        <ul>
-            <li>
-                <h:link outcome="index">Inicio</h:link>    
-            </li>
-            <li>
-                <h:link outcome="solicInfo">Solicitud Información</h:link>    
-            </li>
-            <li>
-                <h:link outcome="listaSolic">Listado Solicitud Información</h:link>    
-            </li>
-            <li>
-                <h:link outcome="listaInteres">Listado Interesados</h:link>    
-            </li>
-            <li>
-                <h:link outcome="altaInteres">Alta Nuevo Interesado</h:link>    
-            </li>
-
-
-        </ul>
-
+        </h:form>
+       
     </h:body>
 </html>
 

@@ -6,8 +6,8 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet library="css" name="../../resources/css/default.css" />
-        <h:outputStylesheet library="css" name="../../resources/css/cssLayout.css"/>
+        <h:outputStylesheet library="css" name="default.css" />
+        <h:outputStylesheet library="css" name="cssLayout.css"/>
         <title>Inicio</title>
     </h:head>
 
@@ -15,14 +15,15 @@
 
 
         <div id="top" class="top">
-            <h3> GESTIÓN SOLICITUD DE INFORMACIÓN  <ui:insert name="top">Top</ui:insert> </h3>
-            <h:link outcome="login" rendered="true">login</h:link>
+            <h3> GESTIÓN SOLICITUD DE INFORMACIÓN  <ui:insert name=""></ui:insert> </h3>
+           
         </div>
 
         <div>
             <div id="left">
-                <ui:insert name="left">Left</ui:insert>
-                <ui:include src="menu.xhtml" />
+                <ui:insert name=""></ui:insert>
+                <ui:include src="comun/menu.xhtml" />
+               
             </div>
 
             <div id="content" class="left_content">
@@ -36,4 +37,4 @@
     </h:body>
 
 </html>
-</div>
+
