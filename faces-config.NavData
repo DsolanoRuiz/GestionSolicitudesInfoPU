@@ -2,11 +2,8 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="solicitud_info.xhtml" x="669" y="343" zoom="true"/>
-        <Node id="index.xhtml" x="334" y="332" zoom="true"/>
-        <Node id="lista_interesados.xhtml" x="650" y="150" zoom="true"/>
-        <Node id="alta_interesado.xhtml" x="400" y="150" zoom="true"/>
-        <Node id="lista_solicitudes.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="C:/Users/Nicole/Dropbox/Mi PC (Home)/Documents/NetBeansProjects/GestionSolicitudesInfoPU/src/main/webapp/solicitudes_info.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="C:/Users/Nicole/Dropbox/Mi PC (Home)/Documents/NetBeansProjects/GestionSolicitudesInfoPU/src/main/webapp/index.xhtml" x="150" y="150" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

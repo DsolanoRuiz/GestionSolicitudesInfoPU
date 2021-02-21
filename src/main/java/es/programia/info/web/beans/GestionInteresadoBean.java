@@ -1,4 +1,3 @@
-
 package es.programia.info.web.beans;
 
 import es.programia.info.entidades.Interesado;
@@ -19,116 +18,28 @@ import es.programia.info.servicios.InteresadosServiceLocal;
 @SessionScoped
 public class GestionInteresadoBean implements Serializable {
 
-    //private Collection<Interesado> coleccionInteresados;
+    private Collection<Interesado> coleccInteresados;
     private Interesado interesado = new Interesado();
-    private boolean editable=false;
-    //private String emailABuscar;
-    private boolean visible= false;
-    
-    @EJB private InteresadosServiceLocal interesadoService;
-    
-    
+    private boolean editable = false;
+    private boolean visible = false;
+    private boolean accionNuevo = false;
+    private boolean accionModificar = false;
+    @EJB
+    private InteresadosServiceLocal interesadoService;
+    //private Logger log;   // = Logger.getLogger("GestionInteresadoBean");
+
     public GestionInteresadoBean() {
         System.out.println(".... instanciando GestionBuscarInteresadoBean");
     }
-    
+
     @PostConstruct
-    public void inicializar(){
-        
-//        this.coleccionInteresados = interesadoService.buscarInteresadoPorCriterio();
+    public void inicializar() {
+        this.coleccInteresados = interesadoService.getAllInteresados();
     }
 
-    /*
-    public Collection<Interesado> getColeccionInteresados() {
-        return coleccionInteresados;
+    public Collection<Interesado> getColeccInteresados() {
+        return coleccInteresados;
     }
-*/
-    
-    
-
-    public Interesado buscar(){
-        
-        try {           
-            interesado = interesadoService.buscarInteresadoPorCriterio(interesado.getNombre(), interesado.getApellidos(), interesado.getEmpresa());
-            FacesContext fc = FacesContext.getCurrentInstance();
-            fc.addMessage(null, new FacesMessage("usuario encontrado"));  
-            return null;
-        } catch (GestionSolicitudesException ex) {
-            FacesContext fc = FacesContext.getCurrentInstance();
-            fc.addMessage(null, new FacesMessage("No se pudo modificar. " + ex.getMessage()));        
-        }catch(Exception e){
-            FacesContext fc = FacesContext.getCurrentInstance();
-            fc.addMessage(null, new FacesMessage("Error no controlado. " + e.getMessage())); 
-            e.printStackTrace();
-        }
-        
-        return null;
-    }
-    
-    
-    public String modificarInteresado(){
-        System.out.println(" ha modificar " + this.interesado.getNombre());
-        
-        try {           
-            this.interesadoService.modificarInteresado(interesado);
-            this.inicializar();
-            FacesContext fc = FacesContext.getCurrentInstance();
-            fc.addMessage(null, new FacesMessage("usuario encontrado"));  
-            return null;
-        } catch (GestionSolicitudesException ex) {
-            FacesContext fc = FacesContext.getCurrentInstance();
-            fc.addMessage(null, new FacesMessage("No se pudo modificar. " + ex.getMessage()));        
-        }catch(Exception e){
-            FacesContext fc = FacesContext.getCurrentInstance();
-            fc.addMessage(null, new FacesMessage("Error no controlado. " + e.getMessage())); 
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
-     public void mostarInteresado(int i){
-        try {
-//            this.interesadoEncontrado = interesadoService.getInteresado;
-//            
-            this.interesado.setNombre("....Ha cambiado");
-            this.interesadoService.modificarInteresado(interesado);
-        } catch (GestionSolicitudesException ex) {
-            Logger.getLogger(GestionInteresadoBean.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (GestionSolicitudesException ex) {
-//           Logger.getLogger(GestionInteresadoBean.class.getName()).log(Level.SEVERE, null, ex);
-       }
-    }
-    
-    public void grabar(Interesado interesado) {
-//        try {
-//            this.interesadoService.grabar(idInteresadoAGrabar);
-//             this.coleccionInteresados =   interesadoService.getAllInteresado();
-//        } catch (GestionSolicitudesException ex) {            
-//            FacesContext fc = FacesContext.getCurrentInstance();
-//            fc.addMessage(null, new FacesMessage("No se pudo grabar. " + ex.getMessage())); 
-//         }
-//            return null;
-    }
-    
-    public String  modoNuevo(){
-        visible=true;
-        return null;
-        
-    }
-     
-    /*
-      public void editar(Interesado interesado) {
-      
-    }
-      
-       public void alta(Interesado interesado) {
-       
-    }
-    
-     public void visible(Interesado interesado) {
-       
-    }
-*/
 
     public Interesado getInteresado() {
         return interesado;
@@ -153,7 +64,101 @@ public class GestionInteresadoBean implements Serializable {
     public void setVisible(boolean Visible) {
         this.visible = Visible;
     }
-     
-     
-     
+
+    public boolean isAccionNuevo() {
+        return accionNuevo;
+    }
+
+    public void setAccionNuevo(boolean accionNuevo) {
+        this.accionNuevo = accionNuevo;
+    }
+
+    public boolean isAccionModificar() {
+        return accionModificar;
+    }
+
+    public void setAccionModificar(boolean accionModificar) {
+        this.accionModificar = accionModificar;
+    }
+
+    public InteresadosServiceLocal getInteresadoService() {
+        return interesadoService;
+    }
+
+    public void setInteresadoService(InteresadosServiceLocal interesadoService) {
+        this.interesadoService = interesadoService;
+    }
+
+    public String buscar() {
+        try {
+            this.interesado = interesadoService.buscarInteresadoPorCriterio(interesado.getNombre(), interesado.getApellidos(), interesado.getEmpresa());
+            FacesContext fc = FacesContext.getCurrentInstance();
+            fc.addMessage(null, new FacesMessage("usuario encontrado"));
+            return null;
+        } catch (GestionSolicitudesException ex) {
+            FacesContext fc = FacesContext.getCurrentInstance();
+            fc.addMessage(null, new FacesMessage("No se pudo modificar. " + ex.getMessage()));
+        } catch (Exception e) {
+            FacesContext fc = FacesContext.getCurrentInstance();
+            fc.addMessage(null, new FacesMessage("Error no controlado. " + e.getMessage()));
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+   
+    public String grabar() {
+
+        if (accionNuevo == true) {
+            try {
+                this.interesadoService.crearNuevoInteresado(interesado);
+                this.inicializar();
+                FacesContext fc = FacesContext.getCurrentInstance();
+                fc.addMessage(null, new FacesMessage("Interesado  ha sido creado"));
+            } catch (GestionSolicitudesException ex) {
+                FacesContext fc = FacesContext.getCurrentInstance();
+                fc.addMessage(null, new FacesMessage("El interesado no se ha sido creado"));
+                return null;
+            }
+
+        } else if (accionModificar == true) {
+            try {
+                interesadoService.modificarInteresado(interesado);
+            } catch (GestionSolicitudesException ex) {
+                FacesContext fc = FacesContext.getCurrentInstance();
+                fc.addMessage(null, new FacesMessage("Interesado modificado. " + ex.getMessage()));
+            } catch (Exception e) {
+                FacesContext fc = FacesContext.getCurrentInstance();
+                fc.addMessage(null, new FacesMessage("Interesado no ha sido modificado. " + e.getMessage()));
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    public String modoNuevo() {
+        visible = true;
+        accionNuevo = true;
+        editable = true;
+        return null;
+
+    }
+
+     public String editar() {
+        editable = true;
+        accionNuevo = true;
+        accionModificar = true;
+       return null;
+
+    }     
+      public String modificar() {
+        editable = true;
+        accionModificar = true;
+       return null;
+       
+    }
+    
+    public String cancelar() {
+        return "solicitud_info1";
+    }
 }

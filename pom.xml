@@ -63,11 +63,6 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>7.0</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -90,7 +85,7 @@
                 <version>2.3</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                     <webResources>
+                    <webResources>
                         <resource> 
                             <directory>src/main/resources/META-INF</directory> 
                             <!-- override the destination directory for this resource --> 

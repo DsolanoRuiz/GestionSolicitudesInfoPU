@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.OptimisticLockException;
 import javax.persistence.Query;
@@ -67,17 +66,10 @@ public class InteresadosService implements InteresadosServiceLocal {
     }
         
     }
-    /*
-     public void grabar(Interesado interesado) {
-       em.persist(interesado);
+  
+    @Override
+    public Collection<Interesado> getAllInteresados() {
+        return null;
+        
     }
-     
-      public void editar(Interesado interesado) {
-       em.persist(interesado);
-    }
-      
-       public void alta(Interesado interesado) {
-       em.persist(interesado);
-    }
-*/
 }
